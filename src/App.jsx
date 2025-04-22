@@ -13,6 +13,10 @@ function App() {
 
  const [data, setData] = useState([])
 
+ //se crea el state de carrito aqui porque si lo creo en el componente guitar se crearian 12 carrito diferentes por cada componente que recorre 
+ //recuerda el modificador se esta pasando via a props
+ const [cart, setCart] = useState([])
+
 
   //hook effect
   //esto si se puede 
@@ -38,6 +42,7 @@ function App() {
                   <Guitar 
                   key={guitar.id}
                   guitar={guitar}
+                  setCart={setCart}
                 /> 
                  )
 

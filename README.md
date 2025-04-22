@@ -215,9 +215,29 @@ recuerda que a parte de pasar el prop nombradoa tu forma tambien puedes usar la 
 
 
 
+## .map 
 
+recuerda siempre pasar la key cuando utilices .map
 
+## eventos en react 
 
+la forma en que react aneja los eventos es muy similar a como lo hace javascript de forma nativa conn algunos cambios 
+
+los eventos son camelcase, es decir n lugar de onchange se utiliza onChange y en lugar de onclick se utiliza onClick
+
+tambien a diferencia de JS y HTML, donde se coloca el nombre de la funcion en un string, en react(jsx) se utiiliza la funcion entre llaves 
+
+ejemplo 
+
+onClick={ nombre-de-funcion }
+
+en el caso de onSubmit ejemplo 
+
+onSubmit={handlenombre-de-funcion}
+
+dentro lleva la convension de handle porque se recomiinda en el caso de un evento que inicie con handle
+
+cuandod tengas argumento o parametro lo mejo es colocar en el jsx ddonde se manda a llmar la funcion un callback para que no se mande a llamar antes del click porque en este caso al menos le stoy pasando el id
 
 
 

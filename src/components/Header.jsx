@@ -1,8 +1,13 @@
 
 
-export default function Header() {
+import { useMemo } from "react"
 
-    const name = "juan"
+
+export default function Header({cart, removeFromCart, increaseQuantity, decreaseQuantity, emptyCart}) {
+
+   //state derivado en este caso depende de cart la funcion por eso es derivado
+   const isEmpty = useMemo(() => cart.length === 0, [cart] )//se ejecutara cada que carrito cambie, se agregan elementos o se quitan 
+   const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.quantity * item.price), 0), [cart])//cada que carrito cambie
 
   return (
    <header className="py-5 header">
@@ -20,7 +25,12 @@ export default function Header() {
                         <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
 
                         <div id="carrito" className="bg-white p-3">
-                            <p className="text-center">El carrito esta vacio</p>
+                            {isEmpty ? (
+                                 <p className="text-center">El carrito esta vacio</p> 
+                            ) : (
+                             
+                            <>
+                                
                             <table className="w-100 table">
                                 <thead>
                                     <tr>
@@ -32,25 +42,30 @@ export default function Header() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+
+                                    {cart.map(guitar => ( //recuerda en vez de return tiene el parentesis para qeu retorne lo que puse dentro en este caso el tr y siempre que itere utilizando un map ponle un key ene ste caso es codigo html en vez de un componente
+
+                                        <tr key={guitar.id}>
                                         <td>
-                                            <img className="img-fluid" src="./public/img/guitarra_02.jpg" alt="imagen guitarra" />
+                                            <img className="img-fluid" src={`/img/${guitar.image}.jpg`} alt={`imagen ${guitar.name}`} />
                                         </td>
-                                        <td>SRV</td>
+                                        <td>{guitar.name}</td>
                                         <td className="fw-bold">
-                                                $299
+                                                ${guitar.price}
                                         </td>
                                         <td className="flex align-items-start gap-4">
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => decreaseQuantity(guitar.id)}
                                             >
                                                 -
                                             </button>
-                                                1
+                                                {guitar.quantity}
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => increaseQuantity(guitar.id)}
                                             >
                                                 +
                                             </button>
@@ -59,16 +74,29 @@ export default function Header() {
                                             <button
                                                 className="btn btn-danger"
                                                 type="button"
+                                                onClick={() => removeFromCart(guitar.id)}
                                             >
                                                 X
                                             </button>
                                         </td>
                                     </tr>
+
+                                    ))}
+    
                                 </tbody>
                             </table>
 
-                            <p className="text-end">Total pagar: <span className="fw-bold">$899</span></p>
-                            <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                            <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal}</span></p>
+
+                            </>
+                         )}
+
+                            <button 
+                            className="btn btn-dark w-100 mt-3 p-2"
+                            onClick={emptyCart}
+                            >
+                                Vaciar Carrito
+                            </button>
                         </div>
                     </div>
                 </nav>

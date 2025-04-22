@@ -240,6 +240,42 @@ dentro lleva la convension de handle porque se recomiinda en el caso de un event
 cuandod tengas argumento o parametro lo mejo es colocar en el jsx ddonde se manda a llmar la funcion un callback para que no se mande a llamar antes del click porque en este caso al menos le stoy pasando el id
 
 
+## state derivado
+
+se crea una funcion o una variable cuyo valor va a depender del otro state de forma fuerte
+
+
+## reduce 
+
+funcion que toma dos parametros uno es el total es decir es el acumulado, va a ir iterando sobre cada elemento que tengamos en el carrito y el segundo parametro es el elemento actual en este caso es el llamado item de ejemplo en header.jsx 
+
+reduce en este caso agarra los precios y los multiplica con la cantidad y saca el total  
+
+ejemplo
+
+const cartTotal = () => cart.reduce( (total, item) => total + (item.quantity * item.price), 0)
+
+ell 0 indica que comenzara a sumar desde ahi
+
+
+## hooks useMemo
+
+esta funcion toma dos valores el primero es el factory o sea la logica el segundo es los parametros que si no cambian esos parametros no se ejecuta 
+
+## array method filter
+
+nos permite filtrar en base a una condicion sin mutar el arreglo 
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -267,6 +267,13 @@ esta funcion toma dos valores el primero es el factory o sea la logica el segund
 nos permite filtrar en base a una condicion sin mutar el arreglo 
 
 
+## localstorage
+
+para guardar en el local storage se utiliza la sintaxis .setItem aqui le pasamos datos al localstorage en este caso este toma dos valores el primero es el nombre de lo que quieres almecenar en el localsttorage y el segundo valor es lo que deseas almecenar
+
+no permite almacenar objecto ni arreglos solamente string
+
+en este ejemplo como el valor es un arreglo se convierte a string con JSON.stringify y dentro se le pasa el carrito llamado cart
 
 
 

@@ -115,6 +115,10 @@ function App() {
   }
 
 
+  function saveLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }
+
 
 
 

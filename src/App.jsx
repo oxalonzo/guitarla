@@ -9,19 +9,36 @@ function App() {
 
   //state
   // const [auth, setAuth] = useState(true)
+  //el state en react es asincrono, eso significa que ejemplo la funcion saveLocalStorage se manda a llamar aun cuando state no a sido modificado
+  //si fuera sicrono ejemplo la funcion addtocart realizaria primero el if y despues realizaria la funcion saveLocalStorage
+
+
+
+  //carrito persistente en el localstorage y que no se borre cuando recargo
+  const initialCart  = () => {
+
+    const localStorageCart = localStorage.getItem('cart')
+
+    //se revisa si tiene algo o no y lo convertimos a arreglo desde un string, si no tiene algo devuelve un string
+    return localStorageCart ? JSON.parse(localStorageCart) : []
+  }
+
 
 
  const [data, setData] = useState([])
 
  //se crea el state de carrito aqui porque si lo creo en el componente guitar se crearian 12 carrito diferentes por cada componente que recorre 
  //recuerda el modificador se esta pasando via a props
- const [cart, setCart] = useState([])
+ const [cart, setCart] = useState(initialCart)
 
 
  const MAX_ITEMS = 5 
  const MIN_ITEMS = 1
 
 
+ useEffect(() => {
+     localStorage.setItem('cart', JSON.stringify(cart))
+ }, [cart])
 
   //hook effect
   //esto si se puede 
@@ -31,7 +48,7 @@ function App() {
   }, [data])
 
 
-  function addToCart(item) {
+  function addToCart(item) { 
 
     //itera sobre el carrito y verifica si exite, item es la variable de guitar que traigo desde guitar.jsx
     //en caso de que no exita retorna -1 en caso de que si retorna la posicion en el arreglo de 0 en adelante, este no muta el objecto
@@ -55,6 +72,8 @@ function App() {
       setCart([...cart, item]) 
 
     }
+
+    
     
   }
 
@@ -115,9 +134,9 @@ function App() {
   }
 
 
-  function saveLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }
+  //function saveLocalStorage() {guarda en el localstorage cuando agrega al carrito los items
+  //   localStorage.setItem('cart', JSON.stringify(cart))
+  // }
 
 
 

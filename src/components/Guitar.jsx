@@ -6,6 +6,7 @@ export default function Guitar({guitar, addToCart}) {
 
   //elimine public de la imagen porque ya apuntaba automaticamente
   //en este caso deje de utiliza la funcion porque se esta utilizando el setCart abajo y es mejor practica segun los codigos
+  //y despues la funcion se cambio a que se realice en el app y solo le paso el objecto desde aqui y es mejor practica
   // const handleClick = (guitar) => {
   //     //con esto setea el carrito pero antes crea una copia para asi mantener los datos del objecttto seleccionado y agregar el siguiente
   //     setCart([...cart, guitar])

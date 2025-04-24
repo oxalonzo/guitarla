@@ -276,10 +276,43 @@ no permite almacenar objecto ni arreglos solamente string
 en este ejemplo como el valor es un arreglo se convierte a string con JSON.stringify y dentro se le pasa el carrito llamado cart
 
 
+setItem le das elemento
+getItem obtienes los elementos
 
 
+## cuando culminas el proyecto
+
+el proyecto se encuentra en desarrollo pero despues se tiene que ejecutar el coamdno vite build para realizar una cantidad de mejoras 
+
+npm run build
+
+se creara el archivo dist no lo cambies ni le hagas nada se tiene que servir tal cual 
 
 
+## crear nuestro propio hooks 
+
+esto en este caso se utilizara como ejemplo para centralizar todas las funciones del carrito de compra 
+
+ventajas: 
+
+existe una gran ventaja de crear tus propios hooks  es la de incorporar state y otros hooks de react a tu propio codigo para poderlo re-utilizar en otros proyectos
+
+otra gran ventaja es la de organizar tu codigo, de esa forma el hook se encarga de toda la logica del state mientras que tus componentes solo de mostrar la informacion 
+
+tu codigo personalizado tendra todas las ventajas de react como son: tus propios states, tener effects, integrar otros hooks y el performance de tu codigo
+
+re-utilizar en otros proyectos
+
+facil de escribir pruebas 
+
+
+como crear tus propiso hooks ? 
+
+los hooks son funciones de javascript pero tienen algunas reglas 
+
+tambien tus hooks deben de seguir la convencion de react use{hook} de esta forma react escanea tu codigo en busqueda de posibles problemas con las reglas de los hooks
+
+un hook usualmente solo debe tener logica y no presentacion (para eso es un componente)
 
 
 
